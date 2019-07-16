@@ -119,6 +119,17 @@
   version = "v1.1.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:eb8f1b1913bffd6e788deee9fe4ba3a4d83267aff6045d3be33105e35ece290b"
+  name = "github.com/docker/spdystream"
+  packages = [
+    ".",
+    "spdy",
+  ]
+  pruneopts = "NUT"
+  revision = "6480d4af844c189cf5dd913db24ddd339d3a4f85"
+
+[[projects]]
   digest = "1:6dd2b549cc43ec65eb4c2a66364a76aa947f20dbf8bf59440b837d4546be9448"
   name = "github.com/emicklei/go-restful"
   packages = [
@@ -466,6 +477,14 @@
   pruneopts = "NUT"
   revision = "3f98efb27840a48a7a2898ec80be07674d19f9c8"
   version = "v0.0.3"
+
+[[projects]]
+  digest = "1:7008ec21a0ce773bd21deefdb7d17fab8cb9f1ae0bc44026cdd2b658ab1582ca"
+  name = "github.com/rogpeppe/go-internal"
+  packages = ["semver"]
+  pruneopts = "NUT"
+  revision = "438578804ca6f31be148c27683afc419ce47c06e"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:d917313f309bda80d27274d53985bc65651f81a5b66b820749ac7f8ef061fd04"
@@ -827,7 +846,7 @@
   revision = "05914d821849570fba9eacfb29466f2d8d3cd229"
 
 [[projects]]
-  digest = "1:f1e7a93aa60a0807124feeab24d8229fda59bda1d997730479fae8e0a526bd39"
+  digest = "1:97f9bdd7f070939c0dcd7a9a5951c920a4a0ca6c404965bd896d5bd031ebfe2b"
   name = "k8s.io/apimachinery"
   packages = [
     "pkg/api/equality",
@@ -859,11 +878,14 @@
     "pkg/util/diff",
     "pkg/util/errors",
     "pkg/util/framer",
+    "pkg/util/httpstream",
+    "pkg/util/httpstream/spdy",
     "pkg/util/intstr",
     "pkg/util/json",
     "pkg/util/mergepatch",
     "pkg/util/naming",
     "pkg/util/net",
+    "pkg/util/remotecommand",
     "pkg/util/runtime",
     "pkg/util/sets",
     "pkg/util/strategicpatch",
@@ -874,13 +896,14 @@
     "pkg/version",
     "pkg/watch",
     "third_party/forked/golang/json",
+    "third_party/forked/golang/netutil",
     "third_party/forked/golang/reflect",
   ]
   pruneopts = "NUT"
   revision = "2b1284ed4c93a43499e781493253e2ac5959c4fd"
 
 [[projects]]
-  digest = "1:884ff37a720e847234285d9b75a086e654ab82fab14ebbcccb1a39578e9331cd"
+  digest = "1:4668a551ed61bca9858eafa985230c789c76aaac64952359fd4a7acf143a3b51"
   name = "k8s.io/client-go"
   packages = [
     "discovery",
@@ -1015,10 +1038,13 @@
     "tools/pager",
     "tools/record",
     "tools/reference",
+    "tools/remotecommand",
     "transport",
+    "transport/spdy",
     "util/buffer",
     "util/cert",
     "util/connrotation",
+    "util/exec",
     "util/flowcontrol",
     "util/homedir",
     "util/integer",
@@ -1151,6 +1177,7 @@
     "test/monitoring",
     "test/spoof",
     "test/zipkin",
+    "version",
   ]
   pruneopts = "T"
   revision = "528ad1c1dd627059b95aef17ccf27f9ab0f46c10"
@@ -1181,9 +1208,11 @@
     "github.com/go-openapi/spec",
     "github.com/jcrossley3/manifestival",
     "github.com/pkg/errors",
+    "github.com/rogpeppe/go-internal/semver",
     "go.uber.org/zap",
     "k8s.io/api/apps/v1",
     "k8s.io/api/core/v1",
+    "k8s.io/api/extensions/v1beta1",
     "k8s.io/apimachinery/pkg/api/equality",
     "k8s.io/apimachinery/pkg/api/errors",
     "k8s.io/apimachinery/pkg/api/meta",
@@ -1210,6 +1239,7 @@
     "k8s.io/client-go/tools/cache",
     "k8s.io/client-go/tools/clientcmd",
     "k8s.io/client-go/tools/record",
+    "k8s.io/client-go/tools/remotecommand",
     "k8s.io/client-go/util/flowcontrol",
     "k8s.io/code-generator/cmd/client-gen",
     "k8s.io/code-generator/cmd/conversion-gen",
@@ -1237,6 +1267,7 @@
     "knative.dev/pkg/test",
     "knative.dev/pkg/test/logging",
     "knative.dev/pkg/test/logstream",
+    "knative.dev/pkg/version",
     "knative.dev/test-infra/scripts",
     "knative.dev/test-infra/tools/dep-collector",
   ]

@@ -170,6 +170,14 @@ func (r *Reconciler) initStatus(_ *mf.Manifest, instance *servingv1alpha1.Knativ
 
 // Apply the manifest resources
 func (r *Reconciler) install(manifest *mf.Manifest, instance *servingv1alpha1.KnativeServing) error {
+	// check whether dependencies are satisfied
+	if err := common.ValidateDependency(r.KubeClientSet,
+		instance.Spec.KnativeDependency, r.Logger); err != nil {
+		instance.Status.MarkDependencyMissing(err.Error())
+		return err
+	}
+	instance.Status.MarkDependenciesMet()
+	r.Logger.Infof("dependency version matched")
 	r.Logger.Debug("Installing manifest")
 	if err := manifest.ApplyAll(); err != nil {
 		instance.Status.MarkInstallFailed(err.Error())

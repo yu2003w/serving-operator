@@ -26,6 +26,7 @@ import (
 const (
 	InstallSucceeded     apis.ConditionType = "InstallSucceeded"
 	DeploymentsAvailable apis.ConditionType = "DeploymentsAvailable"
+	DependenciesMet      apis.ConditionType = "DependenciesMet"
 )
 
 // Registry defines image overrides of knative images.
@@ -72,6 +73,9 @@ type KnativeServingSpec struct {
 
 	// A means to override the cluster-local-gateway
 	ClusterLocalGateway IstioGatewayOverride `json:"cluster-local-gateway,omitempty"`
+
+	// dependencies needs to be validated before installing knative serving
+	KnativeDependency []string `json:"knative-dependency,omitempty"`
 }
 
 // KnativeServingStatus defines the observed state of KnativeServing

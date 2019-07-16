@@ -23,12 +23,13 @@ import (
 	"knative.dev/pkg/injection/sharedmain"
 	"knative.dev/pkg/signals"
 	"knative.dev/serving-operator/pkg/reconciler/knativeserving"
+	"knative.dev/serving-operator/pkg/reconciler/knativeserving/common"
 )
 
 func main() {
 	flag.Parse()
 
-	cfg, err := clientcmd.BuildConfigFromFlags(*knativeserving.MasterURL, *knativeserving.Kubeconfig)
+	cfg, err := clientcmd.BuildConfigFromFlags(*common.MasterURL, *common.Kubeconfig)
 	if err != nil {
 		log.Fatal("Error building kubeconfig", err)
 	}
